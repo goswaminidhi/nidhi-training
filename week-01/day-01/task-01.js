@@ -20,5 +20,4 @@ function isValidNumber(value){
     return Number.isFinite(value);
 }
 
-
 console.log(isValidNumber(Infinity));

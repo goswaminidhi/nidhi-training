@@ -95,4 +95,3 @@ const result6 = function myMap2(array,fn){
 }
 
 console.log(result6(array,compute5));
-
