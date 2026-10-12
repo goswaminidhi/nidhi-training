@@ -4,7 +4,6 @@ const c0 = {
 };
 
 //adding items to the cart
-
 function addItem(cart, item) {
   const exists = cart.items.some((i) => i.id === item.id);
 
@@ -25,8 +24,7 @@ function addItem(cart, item) {
     items: newItems
   };
 }
-
-// Define real values for the item (previously undefined variables)
+ 
 const item = {
   id: 1,
   name: "Pen",

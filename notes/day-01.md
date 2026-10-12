@@ -24,4 +24,5 @@ let x; console.log(x); -> undefined
 1. java first complies it code and than runs it but js can take the raw file
 2. java is statically type but js is dynamicaly types
 3. in java if something is divided by zero it produces airthmetic error but in js it produces infinity 
-4. 
+4. in java we use private keyword to make anything private but in js we use clouser method
+5. 
