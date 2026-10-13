@@ -25,10 +25,10 @@ function withTimeout(promise, ms){
 }
 
 
-// let calls = 0;
-// const flaky = async () => { calls++; if (calls < 3) throw new Error("fail " + calls); return "ok"; };
-// console.log(await retry(flaky, 5, 200));              // "ok"  (calls === 3)
-// calls = 0; 
-// console.log(await retry(flaky, 2, 200));   // rejects with "fail 2"
+let calls = 0;
+const flaky = async () => { calls++; if (calls < 3) throw new Error("fail " + calls); return "ok"; };
+console.log(await retry(flaky, 5, 200));              // "ok"  (calls === 3)
+calls = 0; 
+console.log(await retry(flaky, 2, 200));   // rejects with "fail 2"
 console.log(await withTimeout(delay(100), 500));      // resolves
-// console.log(await withTimeout(delay(1000), 500));     // rejects "Timed out"
+console.log(await withTimeout(delay(1000), 500));     // rejects "Timed out"

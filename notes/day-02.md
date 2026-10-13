@@ -33,7 +33,17 @@ user.laterArrow(); --->>laterArrow:Nidhi
 
 
 
-how the function is called → what this is
+->how the function is called → what this is
 The function is called with the help of object. This refers to the current object function which is calling.
+
+
+
+
+JAVA vs JS
+1. In java we define the variable data type but in js we don't do it. we noramally define them using var,let,const.
+2. In java we use this keyword is fixed to the object the method belong to but in js it is not fixed, it is decided by the how the function is called
+3. In java private keyword is used to declare the private feild but in js # IS used to declare private.
+4. Java is multi-threaded and Js is single threded but the environment(web browser and node.js) provide the multi-threaded cababilities.
+5. In Java to declare the constructor we use class name but in js we use the constructor() to define it
 
 
