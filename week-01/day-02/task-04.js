@@ -60,14 +60,21 @@ loadAllSequential([1, 2]).then((r) => console.log(r));
 
 //loadAllParallel
 async function loadAllParallel(ids){
-console.time("Parallel:")
-    const result =  await Promise.all(
+    console.time("Parallel:")
+    const result = [];
 
-    ids.map(async(id) =>{
+    for(const id of ids){
         let userId = await getUser(id);
         let userPost = await getPosts(userId.id);
-        return {userName : userId.name , userPost: userPost.length};
-    }));
+        result.push({userName : userId.name , userPost: userPost.length});
+    }
+    // const result =  await Promise.all(
+
+    // ids.map(async(id) =>{
+    //     let userId = await getUser(id);
+    //     let userPost = await getPosts(userId.id);
+    //     return {userName : userId.name , userPost: userPost.length};
+    // }));
     console.timeEnd("Parallel:")
     return result;
 }
