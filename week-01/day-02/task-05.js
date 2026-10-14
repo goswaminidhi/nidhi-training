@@ -24,6 +24,6 @@ async function githubSummary(username){
 
 
 
-// githubSummary("goswaminidhi");
+githubSummary("goswaminidhi");
 // githubSummary("torvalds");
-githubSummary("this-user-does-not-exist-12345");
+// githubSummary("this-user-does-not-exist-12345");

@@ -1,25 +1,52 @@
-const button = document.querySelector('#button');
+const form = document.querySelector('#todo');
 const inputItem = document.querySelector('#addTask')
+const list = document.querySelector("#itemList");
+const count = document.querySelector('#count')
 
-button.addEventListener("keydown",function(event){
-    if(event.key === "Enter"){
-        const itmes = inputItem.value;
+function updateCount(){
+    const total = list.querySelectorAll('li').length;
+    const checked = list.querySelectorAll('input[type = "checkbox"]:not(:checked)').length;
+
+    count.textContent = `${checked} of ${total} left`;
+
+}
+
+
+
+form.addEventListener("submit",function(event){
+    event.preventDefault()
+   
+    const text = inputItem.value;
+
+    if(text !== ''){
+        
         const task = document.createElement("li");
-        task.textContent = itmes;
 
-        const list = document.createElement("li");
-        list.append(itmes);
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.addEventListener('click',function(){
+            updateCount();
+        })
+
+
+        const del = document.createElement("button");
+        del.textContent = 'Delete';
+
+        task.textContent = text;
+
+        task.appendChild(checkbox);
+        task.appendChild(del);
+        list.appendChild(task);
     
-        inputItem.value = "";
-    }
-})
+        del.addEventListener('click',function(){
+            task.remove();
+            updateCount();
+        })
 
-button.addEventListener("button" , function(event){
-    event.preventDefault();
-    const itmes = inputItem.value;
-    const task = document.createElement("li");
-    task.textContent = itmes;
-    const list = document.createElement("li");
-    list.append(itmes);    
-    inputItem.value = "";
+
+        inputItem.value = '';
+        updateCount();
+
+        localStorage.setItem("items",list);
+    }
 })

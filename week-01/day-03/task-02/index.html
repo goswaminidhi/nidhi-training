@@ -5,15 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
     <link rel="stylesheet" href="style.css">
-    <script src="a" defer></script>
+    <script src="app.js" defer></script>
     </head>
     <body>
-        <p>TODO LIST</p>
-        <form>
+        <h>TODO LIST</h>
+        <form id="todo">
             <input type="text" id="addTask" placeholder="Enter the list">
             <br>
-            <button type="button" id="button">Add</button>
+            <button type="submit" id="button">Add</button>
         </form>
-        
+        <h3>Added Items:</h3>
+        <li id="itemList" > 
+        </li>
+        <p id="count"> 0 of 0 items completed</p>
     </body>
 </html>
