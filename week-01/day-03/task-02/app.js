@@ -3,6 +3,8 @@ const inputItem = document.querySelector('#addTask')
 const list = document.querySelector("#itemList");
 const count = document.querySelector('#count')
 
+let items = JSON.parse(localStorage.getItem("items")) || [];
+
 function updateCount(){
     const total = list.querySelectorAll('li').length;
     const checked = list.querySelectorAll('input[type = "checkbox"]:not(:checked)').length;
@@ -11,6 +13,9 @@ function updateCount(){
 
 }
 
+function saveItems(){
+    localStorage.setItem("items",JSON.stringify(items));
+}
 
 
 form.addEventListener("submit",function(event){
@@ -19,34 +24,52 @@ form.addEventListener("submit",function(event){
     const text = inputItem.value;
 
     if(text !== ''){
-        
-        const task = document.createElement("li");
 
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.addEventListener('click',function(){
-            updateCount();
-        })
+        const item = {
+        text: text,
+        completed: false
+    };
 
+    items.push(item);
+    saveItems();
 
-        const del = document.createElement("button");
-        del.textContent = 'Delete';
+    const task = document.createElement("li");
 
-        task.textContent = text;
+    const checkbox = document.createElement("input");
 
-        task.appendChild(checkbox);
-        task.appendChild(del);
-        list.appendChild(task);
-    
-        del.addEventListener('click',function(){
-            task.remove();
-            updateCount();
-        })
+    checkbox.type = "checkbox";
 
-
-        inputItem.value = '';
+    checkbox.addEventListener('click',function(){
+        item.completed = checkbox.checked;
+        saveItems();
         updateCount();
+    })
 
-        localStorage.setItem("items",list);
+
+    const del = document.createElement("button");
+    del.textContent = 'Delete';
+
+    task.textContent = text;
+
+    task.appendChild(checkbox);
+    task.appendChild(document.createTextNode(text));
+    task.appendChild(del);
+    list.appendChild(task);
+    
+    del.addEventListener('click',function(){
+        task.remove();
+         items = items.filter(function(currentItem) {
+            return currentItem !== item;
+        });
+
+        saveItems();
+        updateCount();
+    })
+
+
+    inputItem.value = '';
+    updateCount(); 
+
+
     }
 })
