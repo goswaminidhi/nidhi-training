@@ -49,10 +49,11 @@ form.addEventListener("submit",function(event){
     const del = document.createElement("button");
     del.textContent = 'Delete';
 
-    task.textContent = text;
+    //task.textContent = text;
 
-    task.appendChild(checkbox);
+    
     task.appendChild(document.createTextNode(text));
+    task.appendChild(checkbox);
     task.appendChild(del);
     list.appendChild(task);
     
@@ -73,3 +74,49 @@ form.addEventListener("submit",function(event){
 
     }
 })
+
+
+function display(){
+    items.forEach(function(item){
+        const task = document.createElement("li");
+
+    const checkbox = document.createElement("input");
+
+    checkbox.type = "checkbox";
+    checkbox.checked = item.completed;
+
+    const del = document.createElement("button");
+    del.textContent = 'Delete';
+
+    
+    task.appendChild(document.createTextNode(item.text));
+    task.appendChild(checkbox);
+    task.appendChild(del);
+    list.appendChild(task);
+    
+
+    checkbox.addEventListener('click',function(){
+        item.completed = checkbox.checked;
+        saveItems();
+        updateCount();
+    })
+
+    
+    del.addEventListener('click',function(){
+        task.remove();
+         items = items.filter(function(currentItem) {
+            return currentItem !== item;
+        });
+
+        saveItems();
+        updateCount();
+    })
+
+
+    inputItem.value = '';
+    updateCount();
+    });
+}
+
+
+display();
