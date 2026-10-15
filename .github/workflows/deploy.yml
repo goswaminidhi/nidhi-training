@@ -33,7 +33,7 @@ jobs:
       - name: Upload Profile Finder folder
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./week1/day3/task3/profilefinder
+          path: ./week-01/day-03/task-03/profile-finder
 
       - name: Deploy to GitHub Pages
         id: deployment
